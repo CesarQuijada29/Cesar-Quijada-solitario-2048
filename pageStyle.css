@@ -1,0 +1,194 @@
+    :root {
+        --color-bufer:rgb(0, 2, 128);
+        --color-options:linear-gradient(to bottom, #6784f7, #001dd6);;
+        --color-boton:rgb(64, 124, 244);
+        --color-cardBorder: rgb(255, 255, 255);
+        --color-cardshadow: rgb(0, 0, 0);
+        --color-CardAvailable: rgb(0, 0, 65);
+        --color-card-default: linear-gradient(to bottom, #d6d6d6, #34465c);
+        --color-card-2: linear-gradient(to bottom, #d6d6d6, #535353);
+        --color-card-4: linear-gradient(to bottom, #f2ff00, #ffbf00);
+        --color-card-8: linear-gradient(to bottom, #ff9900, #ff5500);
+        --color-card-16: linear-gradient(to bottom, #ff0808, #ff0080);
+        --color-card-32: linear-gradient(to bottom, #ff00bf, #a700c4);
+        --color-card-64: linear-gradient(to bottom, #6f00ff, #0c0076);
+        --color-card-128: linear-gradient(to bottom, #00d9ff, #0091ea);
+        --color-card-256: linear-gradient(to bottom, #00ff2f, #00eaa4);
+        --color-card-512: linear-gradient(to bottom, #3c884b, #033300);
+        --color-card-1024: linear-gradient(to bottom, #604e37, #331500);
+        --color-card-2048: linear-gradient(to bottom, #f9c1f4, #46c4ff);
+    }
+
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #c9e7ff, #3ba7ff);
+    transition: background-color 0.4s, color 0.4s;
+    /* orden interno */
+    margin: 0; 
+    /* orden de los hijos */
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+
+    
+}
+
+.dark-mode {
+        background: linear-gradient(to bottom, #3f46ac,#00244f);
+        color: #ffffff;
+        --color-bufer:rgb(0, 2, 62);
+        --color-options:rgb(43, 61, 142);
+        --color-boton:rgb(186, 199, 255);
+        --color-cardBorder: rgb(17, 17, 17);
+        --color-cardshadow: rgb(255, 255, 255);
+        --color-CardAvailable: rgb(0, 2, 62);
+        --color-card-default: linear-gradient(to bottom, #d6d6d6, #34465c);
+        --color-card-2: linear-gradient(to bottom, #d6d6d6, #535353);
+        --color-card-4: linear-gradient(to bottom, #f2ff00, #ffbf00);
+        --color-card-8: linear-gradient(to bottom, #ff9900, #ff5500);
+        --color-card-16: linear-gradient(to bottom, #ff0808, #ff0080);
+        --color-card-32: linear-gradient(to bottom, #ff00bf, #a700c4);
+        --color-card-64: linear-gradient(to bottom, #6f00ff, #0c0076);
+        --color-card-128: linear-gradient(to bottom, #00d9ff, #0091ea);
+        --color-card-256: linear-gradient(to bottom, #00ff2f, #00eaa4);
+        --color-card-512: linear-gradient(to bottom, #145120, #033300);
+        --color-card-1024: linear-gradient(to bottom, #4e462e, #331500);
+        --color-card-2048: linear-gradient(to bottom, #f9c1f4, #46c4ff);
+    }
+
+.Pagebuffer{
+    width: 100%; /* Tamaño base del padre */
+    top:0px;background-color:var(--color-bufer);
+    /* letras internas */
+    padding-left: 3em;
+    font-family: 'Impact', sans-serif;
+    font-size: 1.5em;
+    color: var(--color-cardBorder);
+    text-shadow:
+        -3px -3px 0 var(--color-cardshadow),  3px -3px 0 var(--color-cardshadow), -3px 3px 0 var(--color-cardshadow), 3px 3px 0 var(--color-cardshadow),
+        -3px  0px 0 var(--color-cardshadow),  3px  0px 0 var(--color-cardshadow),  0px 3px 0 var(--color-cardshadow), 0px -3px 0 var(--color-cardshadow);
+    /* orden de los hijos */
+    flex-direction: column;
+    box-sizing: border-box; 
+}
+
+.OptionsBar{
+    height: 2.5em;
+    width: 100%; /* Tamaño base teniendo en cuenta el padding el padre */
+    background-color:var(--color-options);
+    color: rgb(0, 0, 0);
+    /* orden de los hijos */
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-around; 
+    align-items: flex-start;       
+    gap: 10px;                     
+    box-sizing: border-box; 
+    margin-top:15px;
+
+}
+
+.Button{
+    /* Forma */
+    height: 2.5em;
+    width: 20%;
+    background-color:var(--color-boton);
+    color: rgb(0, 0, 0);
+    border-style: double;
+    border-width: 0.5em;
+    border-color: rgb(0, 36, 79);
+    /* orden */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box; 
+    
+}
+
+.Button:hover{
+    /* Forma */
+    color: rgb(0, 0, 0);
+    background-color: rgb(175, 238, 255);
+}
+
+.RowsContainer{
+    /* Forma */
+    width: 80%;
+    height: 750px;
+    padding: 20px;
+    background:var(--color-options);
+    /* orden */
+    text-align: center;
+    box-sizing: border-box; 
+    /* orden de los hijos */
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    box-sizing: border-box;
+}
+
+.cardRows{
+    /* Forma */
+    width: 20%;
+    height: 700px;
+    background-image: url('Tennas-Background.gif');
+    background-size: cover; /* Ajusta la imagen al tamaño de la pantalla */
+    background-size:  10%;
+    background-repeat: round;  /*queda tipo mosaico */
+    background-attachment: fixed; /* Mantiene la imagen fija al hacer scroll */
+    border-radius: 3em;
+    /* orden */
+    margin: 20px;
+    text-align: center;
+    box-sizing: border-box; 
+    /* orden de los hijos */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    box-sizing: border-box;
+}
+
+.CardAvailable{
+    /* Forma */
+    width: 119px;
+    height: 160px;
+    padding: 10px;
+    border-radius: 1em;
+    background-color:var(--color-CardAvailable);
+    /* orden */
+    box-sizing: border-box; 
+    /* orden de los hijos */
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center; 
+    box-sizing: border-box;
+}
+
+
+.MovableCard{
+    /* Forma */
+    width: 99px;
+    height: 140px;
+    /* Color */
+    background: var(--color-card-default);
+    border: 0.15em solid var(--color-cardBorder);
+    border-radius: 0.5em;
+    /* Letra */
+    font-family: 'Impact', sans-serif;
+    font-size: 3em;
+    color: var(--color-cardBorder);
+    text-shadow:
+        -3px -3px 0 var(--color-cardshadow),  3px -3px 0 var(--color-cardshadow), -3px 3px 0 var(--color-cardshadow), 3px 3px 0 var(--color-cardshadow),
+        -3px  0px 0 var(--color-cardshadow),  3px  0px 0 var(--color-cardshadow),  0px 3px 0 var(--color-cardshadow), 0px -3px 0 var(--color-cardshadow);
+    /* orden */
+    box-sizing: border-box; 
+    /* orden de los hijos */
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    box-sizing: border-box;
+    /* Propiedades para deslizar */
+    cursor: grab;
+    
+}
