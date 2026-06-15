@@ -1,6 +1,6 @@
     :root {
         --color-bufer:rgb(0, 2, 128);
-        --color-options:linear-gradient(to bottom, #6784f7, #001dd6);;
+        --color-options:linear-gradient(to bottom, #6784f7, #001dd6);
         --color-boton:rgb(64, 124, 244);
         --color-cardBorder: rgb(255, 255, 255);
         --color-cardshadow: rgb(0, 0, 0);
@@ -14,7 +14,7 @@
         --color-card-64: linear-gradient(to bottom, #6f00ff, #0c0076);
         --color-card-128: linear-gradient(to bottom, #00d9ff, #0091ea);
         --color-card-256: linear-gradient(to bottom, #00ff2f, #00eaa4);
-        --color-card-512: linear-gradient(to bottom, #3c884b, #033300);
+        --color-card-512: linear-gradient(to bottom, #3e8e3e, #033300);
         --color-card-1024: linear-gradient(to bottom, #604e37, #331500);
         --color-card-2048: linear-gradient(to bottom, #f9c1f4, #46c4ff);
     }
@@ -38,11 +38,12 @@ body {
         background: linear-gradient(to bottom, #3f46ac,#00244f);
         color: #ffffff;
         --color-bufer:rgb(0, 2, 62);
-        --color-options:rgb(43, 61, 142);
-        --color-boton:rgb(186, 199, 255);
-        --color-cardBorder: rgb(17, 17, 17);
-        --color-cardshadow: rgb(255, 255, 255);
-        --color-CardAvailable: rgb(0, 2, 62);
+        --color-options:linear-gradient(to bottom, #6784f7, #000c5b);
+        --color-boton:rgb(0, 0, 0);
+        --color-cardBorder: rgb(0, 0, 0);
+        /* Este está asi para que las letras no queden raras*/
+        --color-cardshadow: ---;
+        --color-CardAvailable: rgb(49, 174, 252);
         --color-card-default: linear-gradient(to bottom, #d6d6d6, #34465c);
         --color-card-2: linear-gradient(to bottom, #d6d6d6, #535353);
         --color-card-4: linear-gradient(to bottom, #f2ff00, #ffbf00);
@@ -52,8 +53,8 @@ body {
         --color-card-64: linear-gradient(to bottom, #6f00ff, #0c0076);
         --color-card-128: linear-gradient(to bottom, #00d9ff, #0091ea);
         --color-card-256: linear-gradient(to bottom, #00ff2f, #00eaa4);
-        --color-card-512: linear-gradient(to bottom, #145120, #033300);
-        --color-card-1024: linear-gradient(to bottom, #4e462e, #331500);
+        --color-card-512: linear-gradient(to bottom, #3e8e3e, #033300);
+        --color-card-1024: linear-gradient(to bottom, #807860, #331500);
         --color-card-2048: linear-gradient(to bottom, #f9c1f4, #46c4ff);
     }
 
@@ -61,15 +62,16 @@ body {
     width: 100%; /* Tamaño base del padre */
     top:0px;background-color:var(--color-bufer);
     /* letras internas */
-    padding-left: 3em;
+    padding: 2em;
     font-family: 'Impact', sans-serif;
     font-size: 1.5em;
-    color: var(--color-cardBorder);
+    color: #ffffff;
     text-shadow:
-        -3px -3px 0 var(--color-cardshadow),  3px -3px 0 var(--color-cardshadow), -3px 3px 0 var(--color-cardshadow), 3px 3px 0 var(--color-cardshadow),
-        -3px  0px 0 var(--color-cardshadow),  3px  0px 0 var(--color-cardshadow),  0px 3px 0 var(--color-cardshadow), 0px -3px 0 var(--color-cardshadow);
+        -3px -3px 0 rgb(0, 0, 0),  3px -3px 0 rgb(0, 0, 0), -3px 3px 0 rgb(0, 0, 0), 3px 3px 0 rgb(0, 0, 0),
+        -3px  0px 0 rgb(0, 0, 0),  3px  0px 0 rgb(0, 0, 0),  0px 3px 0 rgb(0, 0, 0), 0px -3px 0 rgb(0, 0, 0);
     /* orden de los hijos */
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
     box-sizing: border-box; 
 }
 
@@ -87,6 +89,22 @@ body {
     box-sizing: border-box; 
     margin-top:15px;
 
+}
+
+#puntaje{
+    /* Forma */
+    height: 2em;
+    width: 20%;
+    font-size: 1em;
+    background-color:var(--color-boton);
+    border-radius: 1em;
+    /* orden */
+    margin-left: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box; 
+    
 }
 
 .Button{
@@ -111,7 +129,45 @@ body {
     color: rgb(0, 0, 0);
     background-color: rgb(175, 238, 255);
 }
+.modeButton{
+    /* Forma */
+    height: 20%;
+    width: 20%;
+    font-size: 1em;
+    background-color:var(--color-boton);
+    border: 0.5em double;
+    border-radius: 1em;
+    border-color: rgb(0, 36, 79);
+    /* orden */
+    margin-left: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box; 
+    
+}
 
+.modeButton:hover{
+    /* Forma */
+    height: 20%;
+    width: 20%;
+    font-size: 1em;
+    background-color:rgb(0, 0, 0);
+    border: 0.5em double;
+    border-radius: 1em;
+    border-color: rgb(105, 248, 255);
+    color: rgb(0, 0, 0);
+    text-shadow:
+        -3px -3px 0 rgb(105, 248, 255),  3px -3px 0 rgb(105, 248, 255), -3px 3px 0 rgb(105, 248, 255), 3px 3px 0 rgb(105, 248, 255),
+        -3px  0px 0 rgb(105, 248, 255),  3px  0px 0 rgb(105, 248, 255),  0px 3px 0 rgb(105, 248, 255), 0px -3px 0 rgb(105, 248, 255);
+    /* orden */
+    margin-left: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box; 
+    
+}
 .RowsContainer{
     /* Forma */
     width: 80%;
@@ -176,7 +232,7 @@ body {
     border-radius: 0.5em;
     /* Letra */
     font-family: 'Impact', sans-serif;
-    font-size: 3em;
+    font-size: 2.5em;
     color: var(--color-cardBorder);
     text-shadow:
         -3px -3px 0 var(--color-cardshadow),  3px -3px 0 var(--color-cardshadow), -3px 3px 0 var(--color-cardshadow), 3px 3px 0 var(--color-cardshadow),
