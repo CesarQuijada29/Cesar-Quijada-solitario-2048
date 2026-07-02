@@ -2,9 +2,15 @@ const darkMode= document.getElementById('darkSkin');
 const Puntaje= document.getElementById('puntaje');
 const activateMode=false 
 let puntos=0
+const Defeat = new Audio('kirby-death-sound.mp3');
+const Combo = new Audio('kirby_extra_life.mp3');
+const MusFondo = new Audio('musiquita.mp3');
+
 darkMode.addEventListener("click", (e) => {
     e.preventDefault();
     document.body.classList.toggle("dark-mode");
+    MusFondo.loop = true;
+    MusFondo.play();
 });
 
 /*Lógica de movimiento y generacion de cartas */
@@ -15,8 +21,8 @@ let contadorId = 0; // Para que cada objeto tenga un ID único
 
 function crearNuevoObjeto() {
   const newCard = document.createElement('div');
-  const newPosition = Math.floor(Math.random() * 5);
-  const newPositionHard = Math.floor(Math.random() * 4) + 2;
+  const newPosition = Math.floor(Math.random() * 4);
+  const newPositionHard = Math.floor(Math.random() * 6);
   
   // Configuración del objeto
   newCard.id = `cartaArrastrable-${contadorId++}`;
@@ -69,6 +75,7 @@ function crearNuevoObjeto() {
     e.dataTransfer.setData('text/plain', e.target.id);
     
   });
+  GameState();
   generador.appendChild(newCard);
 }
 
@@ -142,6 +149,19 @@ function analisisColumnas() {
     });
 }
 
+function GameState(){
+    let rowsBloqued=0
+    cardRow.forEach(cardRow => {
+        const MaxCards = cardRow.children.length;
+        if(MaxCards == 6){
+            rowsBloqued++;
+        }
+    });
+    if(rowsBloqued==4){
+        Defeat.play();
+    }
+}
+
 
 // Esto crea el objeto de una vez para iniciar
 crearNuevoObjeto();
@@ -158,7 +178,7 @@ cardRow.forEach(cardRow => {
     const id = e.dataTransfer.getData('text/plain');
     const movedCard = document.getElementById(id);
 
-    if(MaxCards<5){
+    if(MaxCards<6){
         cardRow.appendChild(movedCard);
         crearNuevoObjeto();
         analisisColumnas();
@@ -167,5 +187,19 @@ cardRow.forEach(cardRow => {
         movedCard.style.cursor = 'not-allowed';
         /* Combinacion de cartas */
     }
+    else{
+        const cards = Array.from(cardRow.children);
+        const cartaFinal = cards[MaxCards-1];
+        if (movedCard.innerText==cartaFinal.innerText){
+            cardRow.appendChild(movedCard);
+            crearNuevoObjeto();
+            Combo.play();
+            analisisColumnas();
+            /* con esto se fija la carta en la columna */
+            movedCard.setAttribute('draggable', 'false');
+            movedCard.style.cursor = 'not-allowed';
+        }
+    }
   });
 });
+
