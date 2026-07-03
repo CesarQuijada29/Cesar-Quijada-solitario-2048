@@ -108,15 +108,23 @@ body {
 }
 
 .Button{
+    font-family: 'Impact', sans-serif;
+    font-size: 2em;
+    color: #ffffff;
+    text-shadow:
+        -3px -3px 0 rgb(0, 0, 0),  3px -3px 0 rgb(0, 0, 0), -3px 3px 0 rgb(0, 0, 0), 3px 3px 0 rgb(0, 0, 0),
+        -3px  0px 0 rgb(0, 0, 0),  3px  0px 0 rgb(0, 0, 0),  0px 3px 0 rgb(0, 0, 0), 0px -3px 0 rgb(0, 0, 0);
     /* Forma */
-    height: 2.5em;
-    width: 20%;
+    height: 5em;
+    width: 5em;
     background-color:var(--color-boton);
-    color: rgb(0, 0, 0);
     border-style: double;
     border-width: 0.5em;
     border-color: rgb(0, 36, 79);
     /* orden */
+    position: fixed;
+    bottom: 3em;
+    left:2em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -126,7 +134,7 @@ body {
 
 .Button:hover{
     /* Forma */
-    color: rgb(0, 0, 0);
+    color: rgb(167, 244, 244);
     background-color: rgb(175, 238, 255);
 }
 .modeButton{
@@ -250,10 +258,17 @@ body {
 }
 
 #gameover{
+    /* letras internas */
+    padding: 0em;
+    font-family: 'Impact', sans-serif;
+    font-size: 5em;
+    color: #ffffff;
+    text-shadow:
+        -3px -3px 0 rgb(0, 0, 0),  3px -3px 0 rgb(0, 0, 0), -3px 3px 0 rgb(0, 0, 0), 3px 3px 0 rgb(0, 0, 0),
+        -3px  0px 0 rgb(0, 0, 0),  3px  0px 0 rgb(0, 0, 0),  0px 3px 0 rgb(0, 0, 0), 0px -3px 0 rgb(0, 0, 0);
     /* Forma */
-    height: 20%;
+    height: 50%;
     width: 100%;
-    font-size: 1em;
     background-color:var(--color-boton);
     border: 0.5em double;
     border-radius: 1em;
@@ -261,7 +276,7 @@ body {
     /* orden */
     position: fixed;
     top: 3em;
-    margin-left: 20%;
+    left:0em;
     display: flex;
     align-items: center;
     justify-content: center;

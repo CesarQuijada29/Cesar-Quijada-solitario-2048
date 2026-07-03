@@ -1,16 +1,33 @@
 const darkMode= document.getElementById('darkSkin');
 const Puntaje= document.getElementById('puntaje');
-const activateMode=false 
-let puntos=0
+const Music= document.querySelector('.Button');
+let activateMusic=false; 
+let puntos=0;
+let ComboCount=0;
 const Defeat = new Audio('kirby-death-sound.mp3');
 const Combo = new Audio('kirby_extra_life.mp3');
+Combo.volume = 0.30;
 const MusFondo = new Audio('musiquita.mp3');
+MusFondo.volume = 0.5;
+const ErrorSound = new Audio('ErrorSound1.mp3');
 
 darkMode.addEventListener("click", (e) => {
     e.preventDefault();
     document.body.classList.toggle("dark-mode");
-    MusFondo.loop = true;
-    MusFondo.play();
+});
+
+Music.addEventListener("click", (e) => {
+    if(activateMusic==false){
+      e.preventDefault();
+      MusFondo.loop = true;
+      MusFondo.play();
+      activateMusic=true;
+    }
+    else{
+      MusFondo.pause();
+      MusFondo.currentTime = 0;
+      activateMusic=false;
+    }
 });
 
 /*Lógica de movimiento y generacion de cartas */
@@ -21,8 +38,8 @@ let contadorId = 0; // Para que cada objeto tenga un ID único
 
 function crearNuevoObjeto() {
   const newCard = document.createElement('div');
-  const newPosition = Math.floor(Math.random() * 4);
-  const newPositionHard = Math.floor(Math.random() * 6);
+  const newPosition = Math.floor(Math.random() * 3);
+  const newPositionHard = Math.floor(Math.random() * 5);
   
   // Configuración del objeto
   newCard.id = `cartaArrastrable-${contadorId++}`;
@@ -142,6 +159,10 @@ function analisisColumnas() {
                 cardRow.appendChild(newCard);
                 cartaActual.remove();
                 cartaSiguiente.remove(); 
+                ComboCount++;
+                if(ComboCount>2){
+                  Combo.play();
+                }
                 analisisColumnas();
             }
         }
@@ -158,7 +179,15 @@ function GameState(){
         }
     });
     if(rowsBloqued==4){
-        Defeat.play();
+      const page = document.querySelector('.Pagebuffer');
+      const LooseScreen = document.createElement('div');
+      LooseScreen.id = `gameover`;
+      LooseScreen.innerText = `Perdiste! intenta de nuevo`;
+      Defeat.play();
+      MusFondo.pause();
+      MusFondo.currentTime = 0;
+      activateMusic=false;
+      page.appendChild(LooseScreen)
     }
 }
 
@@ -182,6 +211,7 @@ cardRow.forEach(cardRow => {
         cardRow.appendChild(movedCard);
         crearNuevoObjeto();
         analisisColumnas();
+        ComboCount=0;
         /* con esto se fija la carta en la columna */
         movedCard.setAttribute('draggable', 'false');
         movedCard.style.cursor = 'not-allowed';
@@ -193,11 +223,15 @@ cardRow.forEach(cardRow => {
         if (movedCard.innerText==cartaFinal.innerText){
             cardRow.appendChild(movedCard);
             crearNuevoObjeto();
-            Combo.play();
+            //Combo.play();
             analisisColumnas();
+            ComboCount=0;
             /* con esto se fija la carta en la columna */
             movedCard.setAttribute('draggable', 'false');
             movedCard.style.cursor = 'not-allowed';
+        }
+        else{
+          ErrorSound.play();
         }
     }
   });
