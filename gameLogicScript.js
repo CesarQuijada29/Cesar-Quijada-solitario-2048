@@ -8,7 +8,7 @@ const Defeat = new Audio('kirby-death-sound.mp3');
 const Combo = new Audio('kirby_extra_life.mp3');
 Combo.volume = 0.30;
 const MusFondo = new Audio('musiquita.mp3');
-MusFondo.volume = 0.5;
+MusFondo.volume = 0.3;
 const ErrorSound = new Audio('ErrorSound1.mp3');
 
 darkMode.addEventListener("click", (e) => {

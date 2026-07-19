@@ -71,6 +71,7 @@ body {
         -3px  0px 0 rgb(0, 0, 0),  3px  0px 0 rgb(0, 0, 0),  0px 3px 0 rgb(0, 0, 0), 0px -3px 0 rgb(0, 0, 0);
     /* orden de los hijos */
     display: flex;
+    align-items: center;
     flex-direction: row;
     box-sizing: border-box; 
 }
